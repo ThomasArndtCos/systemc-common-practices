@@ -20,12 +20,26 @@ include(${cpm-cmake_SOURCE_DIR}/cmake/CPM.cmake)
 
 cpmaddpackage("${GITHUB}TheLartians/PackageProject.cmake.git@1.4.1")
 
-cpmaddpackage(
-   NAME SystemCLanguage
-   GIT_REPOSITORY  ${GITHUB}accellera-official/systemc.git
-   GIT_SHALLOW True
-   GIT_TAG main
-)
+if(NOT TARGET SystemC::systemc)
+# Prefer an already-installed SystemC.
+if(DEFINED ENV{SYSTEMC_HOME})
+  if(DEFINED SystemCLanguage_DIR)
+    list(PREPEND CMAKE_PREFIX_PATH SystemCLanguage_DIR)
+  endif()
+endif()
+find_package(SystemCLanguage CONFIG QUIET)
+if(NOT SystemCLanguage_FOUND)
+  message(STATUS "SystemC not found locally; fetching it from Git")
+  cpmaddpackage(
+     NAME SystemCLanguage
+     GIT_REPOSITORY  ${GITHUB}accellera-official/systemc.git
+     GIT_SHALLOW True
+     GIT_TAG main
+  )
+else()
+  message(STATUS "Using installed SystemC from ${SystemCLanguage_DIR}")
+endif()
+endif()
 
 add_library(${PROJECT_NAME} INTERFACE)
 
