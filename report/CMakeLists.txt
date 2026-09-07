@@ -41,6 +41,7 @@ else()
 endif()
 endif()
 
+if(NOT TARGET SystemC::cci)
 # Prefer an already-installed CCI.
 if(DEFINED ENV{CCI_HOME})
   if(DEFINED SystemCCCI_DIR)
@@ -58,6 +59,7 @@ if(NOT SystemCCCI_FOUND)
   )
 else()
   message(STATUS "Using installed CCI from ${SystemCCCI_DIR}")
+endif()
 endif()
 
 set(WITH_FMT "true" CACHE STRING "Include FMT library")
