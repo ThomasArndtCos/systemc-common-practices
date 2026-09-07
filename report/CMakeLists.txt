@@ -21,7 +21,7 @@ include(${cpm-cmake_SOURCE_DIR}/cmake/CPM.cmake)
 cpmaddpackage("${GITHUB}TheLartians/PackageProject.cmake.git@1.4.1")
 
 if(NOT TARGET SystemC::systemc)
-# Prefer an already-installed SystemC.
+# Use an already-installed SystemC.
 if(DEFINED ENV{SYSTEMC_HOME})
   if(DEFINED SystemCLanguage_DIR)
     list(PREPEND CMAKE_PREFIX_PATH SystemCLanguage_DIR)
