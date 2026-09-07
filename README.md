@@ -64,3 +64,16 @@ scp::shutdown_logging();
 ```
 
 In both cases an alternate report handler is installed which uses a tabular format and spdlog for writing. By default spdlog logs asynchronously to keep the performance impact low.
+
+
+## build using pre-compiled SystemC and CCI
+For using a pre-compiled SystemC and CCI set SYSTEMC_HOME and CCI_HOME to the root-folder of the pre-compiled libraries. Furthermore, set the cmake variables SystemCLanguage_DIR, SystemCCCI_DIR to 
+the folder where e.g. SystemCLanguageConfig.cmake and SystemCCCIConfig.cmake are stored.
+```
+export SYSTEMC_HOME=/some/folder/systemc-3.0.2
+export CCI_HOME=/some/folder/cci-1.0.2 
+cd systemc-common-practice
+cmake -S . -B build -DSystemCLanguage_DIR=${SYSTEMC_HOME}/lib-linux64/cmake/SystemCLanguage -DSystemCCCI_DIR=${CCI_HOME}/lib-linux64/cmake/SystemCCCI
+cd build
+make
+```
