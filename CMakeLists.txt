@@ -7,6 +7,7 @@ set(GITHUB "https://github.com/" CACHE STRING "github base url")
 
 include(FetchContent)
 include(CTest)
+include(GNUInstallDirs)
 
 FetchContent_Declare(
   cpm-cmake
