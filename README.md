@@ -67,7 +67,7 @@ In both cases an alternate report handler is installed which uses a tabular form
 
 
 ## build using pre-compiled SystemC and CCI
-For using a pre-compiled SystemC and CCI set SYSTEMC_HOME and CCI_HOME to the root-folder of the pre-compiled libraries. Furthermore, set the cmake variables SystemCLanguage_DIR, SystemCCCI_DIR to 
+For using a pre-compiled SystemC and CCI set the cmake variables SystemCLanguage_DIR, SystemCCCI_DIR to 
 the folder where e.g. SystemCLanguageConfig.cmake and SystemCCCIConfig.cmake are stored.
 ```
 export SYSTEMC_HOME=/some/folder/systemc-3.0.2
